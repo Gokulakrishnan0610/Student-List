@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import Favourites from "./Favourites";
+import Student from "./Student"
+import { useState } from "react";
 
 function App() {
+
+  const [item, setitem] = useState([])
+ 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+
+        <nav className="bg-blue-500 p-5 flex flex-row gap-10">
+          <Link to={"/"} className="text-2xl underline">List of Students</Link>
+          <Link to={"/Favourites"} className="text-2xl underline">Favourite Students</Link>
+        </nav>
+
+        <Routes>
+          <Route path="/" element={<Student item={item} setitem={setitem} />} />
+          <Route path="/Favourites" element={<Favourites item={item} setitem={setitem} />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
