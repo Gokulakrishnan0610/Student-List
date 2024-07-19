@@ -11,9 +11,9 @@ const Students = (props) => {
 
     return (
         <div className="p-5">
-            <ol className="flex flex-col gap-3">
+            <div className="flex flex-col gap-8 lg:w-1/4">
                 {list.map((student, index) => (
-                    <li key={index} className="flex flex-row gap-3 text-xl">
+                    <p key={index} className="flex flex-row gap-3 text-xl justify-between">
                         {index+1}.{student}{" "}
                         {!item.includes(student) && (
                             <button onClick={() => addToFavorites(index)} className="bg-blue-500 p-2">
@@ -23,9 +23,9 @@ const Students = (props) => {
                         {item.includes(student) && (
                             <span className="bg-blue-500 p-2">Added</span>
                         )}
-                    </li>
+                    </p>
                 ))}
-            </ol>
+            </div>
         </div>
     );
 };
